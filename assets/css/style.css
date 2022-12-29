@@ -1,5 +1,9 @@
 
 
+.form-group {
+    margin-bottom: 1rem;
+}
+
 #inputValue {
     width: 760px;
     font-size: 1 rem;
