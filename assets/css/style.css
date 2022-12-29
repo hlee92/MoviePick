@@ -1,0 +1,27 @@
+
+
+#inputValue {
+    width: 760px;
+    font-size: 1 rem;
+    font-weight: 400;
+    line-height: 1.5;
+    outline: none;
+    color: lavender;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .25rem;
+}
+
+#search {
+    color: white;
+    background-color: skyblue;
+    font-size: 1rem;
+    min-height: 38px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: .375rem .75 rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
