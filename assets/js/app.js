@@ -17,6 +17,14 @@ function generateUrl(path) {
     return url;
 }
 
+function requestMovies(url, onComplete, onError) { //function is used to request new movies
+    fetch(url)
+        .then((res) => res.json())
+        .then(onComplete)
+        .catch(onError)
+
+}
+
 function movieSection(movies) {
     return movies.map((movie) => {
         if (movie.poster_path) {
@@ -92,9 +100,9 @@ function createVideoTemplate(data, content) {
     //Display movie videos
     content.innerHTML = '<p id="content-close">X</p>';
     console.log('Videos:', data);
-    const videos = data.results;
-    const length = videos.length > 4 ? 4 : videos.length;
-    const iframeContainer = document.createElement('div');
+    const videos = data.results; //when you get video from result 
+    const length = videos.length > 4 ? 4 : videos.length; //you display no more than 4
+    const iframeContainer = document.createElement('div'); //built iframe
 
 
     for (let i = 0; i < length; i++) {
