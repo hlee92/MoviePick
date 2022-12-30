@@ -75,6 +75,15 @@ buttonElement.onclick = function (event) {
     console.log('Value: ', value);
 
 }
+
+function createIframe(video) {
+    const iframe=document.createElement('iframe');
+    iframe.src= `https://www.youtube.com/embed/${video.key}`
+
+}
+
+
+
 //Event Delegation
 document.onclick = function (event) {
 
