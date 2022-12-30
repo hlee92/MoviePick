@@ -77,14 +77,33 @@ buttonElement.onclick = function (event) {
 }
 
 function createIframe(video) {
-    const iframe=document.createElement('iframe');
-    iframe.src= `https://www.youtube.com/embed/${video.key}`;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${video.key}`;
     iframe.width = 360;
     iframe.height = 315;
     iframe.allowFullScreen = true;
 
     return iframe;
 
+}
+
+function createVideoTemplate(data, content) {
+    //TO DO
+    //Display movie videos
+    content.innerHTML = '<p id="content-close">X</p>';
+    console.log('Videos:', data);
+    const videos = data.results;
+    const length = videos.length > 4 ? 4 : videos.length;
+    const iframeContainer = document.createElement('div');
+
+
+    for (let i = 0; i < length; i++) {
+        const video = videos[i]; //represeting every video
+        const iframe = createIframe(video);
+        iframeContainer.appendChild(iframe);
+        content.appendChild(iframeContainer);
+
+    }
 }
 
 
@@ -105,26 +124,10 @@ document.onclick = function (event) {
         //Fetch movie videos
         const path = `/movie/${movieId}/videos`; //generating the path where you want the url to go
         const url = generateUrl(path); //end up having the url of where we want to make the request 
-        
+
         fetch(url)
             .then((res) => res.json())  //then we call the API which we get the movie back 
-            .then((data) => {
-                //TO DO
-                //Display movie videos
-                console.log('Videos:', data);
-                const videos = data.results;
-                const length = videos.length > 4 ? 4 : videos.length;
-                const iframeContainer = document.createElement('div');
-
-
-                for(let i = 0; i < length; i++) {
-                    const video = videos[i]; //represeting every video
-                    const iframe = createIframe(video);
-                    iframeContainer.appendChild(iframe);
-                    content.appendChild(iframeContainer);
-
-                }
-            })
+            .then((data) => createVideoTemplate(data, content))
             .catch((error) => {
                 console.log('Error: ', error);
             });
