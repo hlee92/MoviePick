@@ -78,7 +78,12 @@ buttonElement.onclick = function (event) {
 
 function createIframe(video) {
     const iframe=document.createElement('iframe');
-    iframe.src= `https://www.youtube.com/embed/${video.key}`
+    iframe.src= `https://www.youtube.com/embed/${video.key}`;
+    iframe.width = 360;
+    iframe.height = 315;
+    iframe.allowFullScreen = true;
+
+    return iframe;
 
 }
 
@@ -107,6 +112,18 @@ document.onclick = function (event) {
                 //TO DO
                 //Display movie videos
                 console.log('Videos:', data);
+                const videos = data.results;
+                const length = videos.length > 4 ? 4 : videos.length;
+                const iframeContainer = document.createElement('div');
+
+
+                for(let i = 0; i < length; i++) {
+                    const video = videos[i]; //represeting every video
+                    const iframe = createIframe(video);
+                    iframeContainer.appendChild(iframe);
+                    content.appendChild(iframeContainer);
+
+                }
             })
             .catch((error) => {
                 console.log('Error: ', error);
