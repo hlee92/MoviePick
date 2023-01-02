@@ -29,19 +29,22 @@ function searchMovie(value) { //function with value that searches for any movie
 function getUpcomingMovies() { //function with value that searches for any movie 
     const path = '/movie/upcoming';
     const url = generateUrl(path);
-    requestMovies(url, renderMovies, handleError);
+    const render = renderMovies.bind({ title: 'Upcoming Movies' })
+    requestMovies(url, render, handleError);
 }
 
 function getTopRatedMovies() { //function with value that searches for any movie 
     const path = '/movie/top_rated';
     const url = generateUrl(path);
-    requestMovies(url, renderMovies, handleError);
+    const render = renderMovies.bind({ title: 'Top Rated Movies' })
+    requestMovies(url, render, handleError);
 }
 
 function getPopularMovies() { //function with value that searches for any movie 
     const path = '/movie/popular';
     const url = generateUrl(path);
-    requestMovies(url, renderMovies, handleError);
+    const render = renderMovies.bind({ title: 'Popular Movies' })
+    requestMovies(url, render, handleError);
 }
 
 

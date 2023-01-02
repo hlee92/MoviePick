@@ -30,6 +30,11 @@
 
 #movies-searchable {
     margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.movie {
+    margin-bottom: 30px;
 }
 
 section {
@@ -50,8 +55,13 @@ img:hover {
 }
 
 .content {
-    border: 1px solid black;
+    border: 1px solid lightgray;
+    padding: 20px;
     display: none;
+}
+
+#content-close {
+    cursor: pointer;
 }
 
 .content div {
@@ -65,3 +75,4 @@ img:hover {
 .content-display {
     display: block;
 }
+
