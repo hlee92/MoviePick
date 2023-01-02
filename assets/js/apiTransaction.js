@@ -27,3 +27,12 @@ function searchMovie(value) { //function with value that searches for any movie
 
 }
 
+function getUpcomingMovies() { //function with value that searches for any movie 
+    const path = '/movie/upcoming';
+    const url = generateUrl(path);
+    requestMovies(url, renderSearchMovies, handleError);
+}
+
+
+
+/movie/upcoming
