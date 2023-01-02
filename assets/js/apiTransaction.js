@@ -22,7 +22,6 @@ function requestMovies(url, onComplete, onError) { //function is used to request
 function searchMovie(value) { //function with value that searches for any movie 
     const path = '/search/movie';
     const url = generateUrl(path) + '&query=' + value;;
-
     requestMovies(url, renderSearchMovies, handleError);
 
 }
@@ -30,9 +29,24 @@ function searchMovie(value) { //function with value that searches for any movie
 function getUpcomingMovies() { //function with value that searches for any movie 
     const path = '/movie/upcoming';
     const url = generateUrl(path);
-    requestMovies(url, renderSearchMovies, handleError);
+    requestMovies(url, renderMovies, handleError);
+}
+
+function getTopRatedMovies() { //function with value that searches for any movie 
+    const path = '/movie/top_rated';
+    const url = generateUrl(path);
+    requestMovies(url, renderMovies, handleError);
+}
+
+function getPopularMovies() { //function with value that searches for any movie 
+    const path = '/movie/popular';
+    const url = generateUrl(path);
+    requestMovies(url, renderMovies, handleError);
 }
 
 
 
-/movie/upcoming
+
+
+
+

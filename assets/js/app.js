@@ -2,6 +2,7 @@
 const buttonElement = document.querySelector('#search');
 const inputElement = document.querySelector('#inputValue');
 const movieSearchable = document.querySelector('#movies-searchable');
+const moviesContainer = document.querySelector('#movies-container');
 
 
 function movieSection(movies) {
@@ -40,6 +41,13 @@ function renderSearchMovies(data) {
     const movieBlock = createMovieContainer(movies);
     movieSearchable.appendChild(movieBlock);
     console.log('Data: ', data);
+}
+
+function renderMovies(data) {
+    //data.results []
+    const movies = data.results;
+    const movieBlock = createMovieContainer(movies);
+    moviesContainer.appendChild(movieBlock);
 }
 
 function handleError() {
@@ -119,3 +127,9 @@ document.onclick = function (event) {
         content.classList.remove('content-display');
     }
 }
+
+getUpcomingMovies();
+
+getTopRatedMovies();
+
+getPopularMovies();
