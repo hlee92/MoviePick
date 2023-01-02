@@ -17,7 +17,7 @@
 
 #search {
     color: white;
-    background-color: skyblue;
+    background-color: orangered;
     font-size: 1rem;
     min-height: 38px;
     font-weight: 400;
@@ -50,7 +50,7 @@ img:hover {
 }
 
 .content {
-    border: 1px solid red;
+    border: 1px solid black;
     display: none;
 }
 

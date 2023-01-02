@@ -1,29 +1,8 @@
-
-
-//Initial Values
-const API_KEY = '89b3b7c5708d28b6ced951a4f58004eb';
-const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-
-const url = 'https://api.themoviedb.org/3/search/movie?api_key=89b3b7c5708d28b6ced951a4f58004eb';
-
 //Selecting elements from the DOM
 const buttonElement = document.querySelector('#search');
 const inputElement = document.querySelector('#inputValue');
 const movieSearchable = document.querySelector('#movies-searchable');
 
-//makes generating the url based on the path, making it much more dynamic 
-function generateUrl(path) {
-    const url = `https://api.themoviedb.org/3${path}?api_key=89b3b7c5708d28b6ced951a4f58004eb`;
-    return url;
-}
-
-function requestMovies(url, onComplete, onError) { //function is used to request new movies
-    fetch(url)
-        .then((res) => res.json())
-        .then(onComplete)
-        .catch(onError)
-
-}
 
 function movieSection(movies) {
     return movies.map((movie) => {
@@ -63,19 +42,14 @@ function renderSearchMovies(data) {
     console.log('Data: ', data);
 }
 
+function handleError() {
+    console.log('Error', error)
+}
 
 buttonElement.onclick = function (event) {
     event.preventDefault();
     const value = inputElement.value;
-    const path = '/search/movie';
-    const newUrl = generateUrl(path) + '&query=' + value;;
-
-    fetch(newUrl)
-        .then((res) => res.json())
-        .then(renderSearchMovies)
-        .catch((error) => {
-            console.log('Error: ', error);
-        });
+    searchMovie(value); //every time you search, you call the value 
 
     //Resets search value, clears old text
     inputElement.value = '';
@@ -113,8 +87,6 @@ function createVideoTemplate(data, content) {
 
     }
 }
-
-
 
 //Event Delegation
 document.onclick = function (event) {
